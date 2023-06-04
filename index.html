@@ -14,8 +14,7 @@
             <small id="userHelp" class="form-text"></small><br>
             <label>Senha:</label>
             <input type="password" class="form-control" id="senha" oninput="validarCampo(this, 'passwordHelp', new RegExp('^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[!@#$%^&*()_+\\-=[\\]{};\\\\|,.<>\\/?]).{8,30}$'), 'Senha inválida: A senha deve conter pelo menos uma letra maiúscula, uma letra minúscula, um número e um caractere especial. A quantidade máxima permitida é 30 caracteres e mínima 8.')">
-            <small id="passwordHelp" class="form-text"></small>
-            <small id='anotherPasswordHelp'class="form-text"></small><br>
+            <small id="passwordHelp" class="form-text"></small><br>
             <label>E-mail:</label>
             <input type="email" class="form-control" id="email" oninput="validarCampo(this, 'emailHelp', /^[^\s@]+@[^\s@]+\.[^\s@]{3,}$/, 'E-mail inválido')">
             <small id="emailHelp" class="form-text"></small>

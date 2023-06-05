@@ -10,16 +10,18 @@
         <img class="slogan" src="https://static.portaldaindustria.com.br/media/uploads/logotipos/logo-senai.png" alt="Logo SENAI">
         <h3>Formulário com validação</h3><hr>
         <div class="form-group">
-            <label>Usuário:</label>
-            <input type="text" class="form-control" id="usuario" oninput="validarCampo(this, 'userHelp', /^[a-zA-Z]{6,15}$/, 'Usuário inválido')">
-            <small id="userHelp" class="form-error"></small><br>
-            <label>Senha:</label>
-            <input type="password" class="form-control" id="senha" oninput="validarCampo(this, 'passwordHelp', new RegExp('^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[!@#$%^&*()_+\\-=[\\]{};\\\\|,.<>\\/?]).{8,30}$'), 'Senha inválida:\n A senha deve conter pelo\n menos uma letra maiúscula,\n uma letra minúscula, um\n número e um caractere especial.\n A quantidade máxima permitida\n é 30 caracteres e mínima 8.')">
-            <small id="passwordHelp" class="form-error"></small><br>
-            <label>E-mail:</label>
-            <input type="email" class="form-control" id="email" oninput="validarCampo(this, 'emailHelp', /^[^\s@]+@[^\s@]+\.[^\s@]{3,}$/, 'E-mail inválido')">
-            <small id="emailHelp" class="form-error"></small><br>
-            <button type="button" class="btn btn-primary" onclick="mostrarMensagem()">Enviar</button>
+            <form method='POST'>
+                <label>Usuário:</label>
+                <input type="text" class="form-control" id="usuario" oninput="validarCampo(this, 'userHelp', /^[a-zA-Z]{6,15}$/, 'Usuário inválido')">
+                <small id="userHelp" class="form-error"></small><br>
+                <label>Senha:</label>
+                <input type="password" class="form-control" id="senha" oninput="validarCampo(this, 'passwordHelp', new RegExp('^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[!@#$%^&*()_+\\-=[\\]{};\\\\|,.<>\\/?]).{8,30}$'), 'Senha inválida:\n A senha deve conter pelo\n menos uma letra maiúscula,\n uma letra minúscula, um\n número e um caractere especial.\n A quantidade máxima permitida\n é 30 caracteres e mínima 8.')">
+                <small id="passwordHelp" class="form-error"></small><br>
+                <label>E-mail:</label>
+                <input type="email" class="form-control" id="email" oninput="validarCampo(this, 'emailHelp', /^[^\s@]+@[^\s@]+\.[^\s@]{3,}$/, 'E-mail inválido')">
+                <small id="emailHelp" class="form-error"></small><br>
+                <button type="submit" class="btn btn-primary" onclick="mostrarMensagem()">Enviar</button>
+            </form>
         </div>
     </div>
 

@@ -18,7 +18,7 @@
             <label>E-mail:</label>
             <input type="email" class="form-control" id="email" oninput="validarCampo(this, 'emailHelp', /^[^\s@]+@[^\s@]+\.[^\s@]{3,}$/, 'E-mail inválido')">
             <small id="emailHelp" class="form-text"></small>
-            <input type="submit" class="submit">
+            <button type="button" class="btn btn-primary" onclick="mostrarMensagem()">Enviar</button>
         </div>
     </div>
 
@@ -39,6 +39,17 @@
                     input.classList.add("is-valid");
                 }
             }
+        }
+        function mostrarMensagem() {
+            alert("Formulário enviado!");
+
+            const inputIds = ["usuario", "senha", "email"];
+
+            inputIds.forEach(function(inputId) {
+                const input = document.getElementById(inputId);
+                input.value = "";
+                input.classList.remove("is-valid");
+            });
         }
     </script>
 </body>

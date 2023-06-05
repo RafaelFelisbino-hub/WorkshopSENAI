@@ -41,15 +41,27 @@
             }
         }
         function mostrarMensagem() {
-            alert("Formulário enviado!");
-
             const inputIds = ["usuario", "senha", "email"];
+            let allFieldsValid = true;
 
             inputIds.forEach(function(inputId) {
                 const input = document.getElementById(inputId);
-                input.value = "";
-                input.classList.remove("is-valid");
+                if (!input.classList.contains("is-valid")) {
+                    allFieldsValid = false;
+                }
             });
+
+            if (allFieldsValid) {
+                alert("Formulário enviado!");
+
+                inputIds.forEach(function(inputId) {
+                    const input = document.getElementById(inputId);
+                    input.value = "";
+                    input.classList.remove("is-valid");
+                });
+            } else {
+                alert("Por favor, preencha todos os campos corretamente.");
+            }
         }
     </script>
 </body>

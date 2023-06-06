@@ -3,26 +3,91 @@
 <head>
     <title>Workshop SENAI</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
     <link rel="icon" type="image/x-icon" href="https://storage.googleapis.com/ecdt-logo-saida/6d394bc6f5edc58839b23d9c606397024c4015c89d64e7cf7a1577a60134d684/INSTITUTO-SENAI-DE-TEC-EM-ALIMENTOS-E-MEIO-AMBIENTE.webp">
+    <style>
+        body {
+            background-color: #f0f0f0;
+            color: #005daa;
+            font-family: Arial, sans-serif;
+        }
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+        .slogan {
+            width: 300px;
+            height: 100px;
+        }
+        h3 {
+            color: #005daa;
+            margin-top: 20px;
+            font-family: Arial, sans-serif;
+            font-weight: bold;
+        }
+        .form-wrapper {
+            text-align: left;
+            margin-top: 20px;
+            width: 400px;
+            margin: 50px auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .form-wrapper h3 {
+            text-align: center;
+        }
+        .form-group {
+            margin-bottom: 20px;
+        }
+        .form-control {
+            width: 97%;
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        .btn-primary {
+            margin-right: 10px;
+            background-color: #005daa;
+            color: #fff;
+            cursor: pointer;
+            width: 100%;
+        }
+        .btn-group {
+            display: flex;
+            justify-content: space-between;
+        }
+    </style>
 </head>
 <body>
     <div class="container">
-        <img class="slogan" src="https://static.portaldaindustria.com.br/media/uploads/logotipos/logo-senai.png" alt="Logo SENAI">
-        <h3>Formulário com validação</h3><hr>
-        <div class="form-group">
-            <form method='POST'>
-                <label>Usuário:</label>
+    <img class="slogan" src="https://static.portaldaindustria.com.br/media/uploads/logotipos/logo-senai.png" alt="Logo SENAI">
+        <div class="form-wrapper">
+        <h3>Cadastro</h3>
+        <form action="">
+            <div class="form-group">
+                <label>Usuário:<br></label>
                 <input type="text" class="form-control" id="usuario" oninput="validarCampo(this, 'userHelp', /^[a-zA-Z]{6,15}$/, 'Usuário inválido')">
-                <small id="userHelp" class="form-error"></small><br>
-                <label>Senha:</label>
-                <input type="password" class="form-control" id="senha" oninput="validarCampo(this, 'passwordHelp', new RegExp('^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[!@#$%^&*()_+\\-=[\\]{};\\\\|,.<>\\/?]).{8,30}$'), 'Senha inválida:\n A senha deve conter pelo\n menos uma letra maiúscula,\n uma letra minúscula, um\n número e um caractere especial.\n A quantidade máxima permitida\n é 30 caracteres e mínima 8.')">
-                <small id="passwordHelp" class="form-error"></small><br>
-                <label>E-mail:</label>
+                <small id="userHelp" class="form-text"></small>
+            </div>
+            <div class="form-group">
+                <label>E-mail:<br></label>
                 <input type="email" class="form-control" id="email" oninput="validarCampo(this, 'emailHelp', /^[^\s@]+@[^\s@]+\.[^\s@]{3,}$/, 'E-mail inválido')">
-                <small id="emailHelp" class="form-error"></small><br>
-                <button type="submit" class="btn btn-primary" onclick="mostrarMensagem()">Enviar</button>
-            </form>
+                <small id="emailHelp" class="form-text"></small>
+            </div>
+            <div class="form-group">
+                <label>Senha:<br></label>
+                <input type="password" class="form-control" id="senha" oninput="validarCampo(this, 'passwordHelp', /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*()_+\-=[\]{};\\|,.<>\/?]).{8,30}$/, 'Senha inválida: A senha deve conter pelo menos uma letra maiúscula, uma letra minúscula, um número e um caractere especial. A quantidade máxima permitida é 30 caracteres e a mínima é 8.')">
+                <small id="passwordHelp" class="form-text"></small>
+            </div>
+            <div class="btn-group">
+                <button type="submit" class="btn-primary" onclick="mostrarMensagem()">Enviar</button>
+                <button type="button" class="btn-primary" onclick="limparCampos()">Limpar</button>
+            </div>
+        </form>
         </div>
     </div>
 
@@ -44,9 +109,10 @@
                 }
             }
         }
+
         function mostrarMensagem() {
             event.preventDefault();
-            
+
             const inputIds = ["usuario", "senha", "email"];
             let allFieldsValid = true;
 
@@ -68,6 +134,22 @@
             } else {
                 alert("Por favor, preencha todos os campos corretamente.");
             }
+        }
+
+        function limparCampos() {
+            const inputIds = ["usuario", "senha", "email"];
+
+            inputIds.forEach(function(inputId) {
+                const input = document.getElementById(inputId);
+                input.value = "";
+                input.classList.remove("is-valid");
+                input.classList.remove("is-invalid");
+            });
+            
+            const helpElements = document.querySelectorAll('.form-text');
+            helpElements.forEach(function(helpElement) {
+                helpElement.textContent = '';
+            });
         }
     </script>
 </body>
